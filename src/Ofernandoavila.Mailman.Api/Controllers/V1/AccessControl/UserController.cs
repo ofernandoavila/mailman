@@ -6,6 +6,7 @@ using Ofernandoavila.Mailman.Api.ViewModels.AccessControl;
 using Ofernandoavila.Mailman.Business.Interfaces.Notification;
 using Ofernandoavila.Mailman.Business.Interfaces.Services.AccessControl;
 using Ofernandoavila.Mailman.Business.Interfaces.User;
+using Ofernandoavila.Mailman.Business.Models.AccessControl;
 
 namespace Ofernandoavila.Mailman.Api.Controllers.V1.AccessControl;
 
@@ -28,8 +29,25 @@ public class UserController(IMapper mapper, IUserService userService, INotificat
         return CustomResponse(userViewModel);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Add(UserInsertViewModel model)
+    {
+        if(!ModelState.IsValid) return CustomResponse(ModelState);
+
+        if (!await _userService.Add(_mapper.Map<User>(model)))
+            return CustomResponse();
+
+        await Complete();
+        return Ok();
+    }
+
     private async Task<UserViewModel> GetUser(Guid id)
     {
         return _mapper.Map<UserViewModel>(await _userService.GetById(id));
+    }
+
+    private async Task Complete()
+    {
+        await _userService.Complete();
     }
 }

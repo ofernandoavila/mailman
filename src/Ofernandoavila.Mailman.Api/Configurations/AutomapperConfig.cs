@@ -15,6 +15,7 @@ public class AutomapperConfig : Profile
         CreateMap<Session, SessionViewModel>().ReverseMap();
         CreateMap<User, UserCreateViewModel>().ReverseMap();
         CreateMap<User, UserLoginViewModel>().ReverseMap();
+        CreateMap<User, UserInsertViewModel>().ReverseMap();
         CreateMap<User, UserViewModel>().ReverseMap();
 
         CreateMap<Role, RoleViewModel>().ReverseMap();
