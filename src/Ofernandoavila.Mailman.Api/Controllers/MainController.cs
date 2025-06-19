@@ -22,8 +22,9 @@ public abstract class MainController : ControllerBase
     public MainController(INotificator notificator, IUser appUser)
     {
         _notificator = notificator;
+        _appUser = appUser;
 
-        if(_appUser.IsAuthenticated())
+        if (_appUser.IsAuthenticated())
         {
             UserId = _appUser.GetUserId();
             UserRole = _appUser.GetUserRole();
