@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: MailmanDB
+    environment:
+      POSTGRES_USER: user.admin
+      POSTGRES_PASSWORD: 3a4d395e-24de-41c8-8f6f-403baa654819
+      POSTGRES_DATABASE: Mailman
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DATABASE"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
