@@ -164,19 +164,7 @@ namespace Ofernandoavila.Mailman.Data.Migrations
                         {
                             Id = new Guid("775611a5-7f0b-46b9-8a2c-1f2526d865e5"),
                             Active = 1,
-                            Description = "Administrator"
-                        },
-                        new
-                        {
-                            Id = new Guid("4b4f973b-2f57-4671-a302-60cfecbc1bf9"),
-                            Active = 1,
-                            Description = "StoreOwner"
-                        },
-                        new
-                        {
-                            Id = new Guid("63569f70-acee-4296-83a7-ef495203c890"),
-                            Active = 1,
-                            Description = "Client"
+                            Description = "Developer"
                         });
                 });
 

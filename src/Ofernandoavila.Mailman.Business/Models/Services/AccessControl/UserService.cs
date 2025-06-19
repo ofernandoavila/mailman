@@ -8,10 +8,10 @@ using Ofernandoavila.Mailman.Business.Utils.Security;
 
 namespace Ofernandoavila.Mailman.Business.Models.Services.AccessControl;
 
-public class UserService(IUnityOfWork unityOfWork,
+public class UserService(IUnitOfWork unitOfWork,
                             INotificator notificator) : BaseService(notificator), IUserService
 {
-    private readonly IUnityOfWork _unityOfWork = unityOfWork;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
     public async Task<bool> Add(User user)
     {
         if(!Validate(user)) return false;
@@ -21,76 +21,76 @@ public class UserService(IUnityOfWork unityOfWork,
         user.EncryptPassword(password);
         user.SetFirstAccessFlag();
 
-        await _unityOfWork.UserRepository.Add(user);
+        await _unitOfWork.UserRepository.Add(user);
 
         return true;
     }
 
     public Task<User> CheckUserByEmail(string email)
     {
-        return _unityOfWork.UserRepository.GetUserByEmail(email);
+        return _unitOfWork.UserRepository.GetUserByEmail(email);
     }
 
     public async Task Complete()
     {
-        await _unityOfWork.Complete();
+        await _unitOfWork.Complete();
     }
 
     public async Task<bool> Delete(Guid id)
     {
-        if(_unityOfWork.UserRepository.GetById(id).Result is null)
+        if(_unitOfWork.UserRepository.GetById(id).Result is null)
             return Notificate("User not found.");
 
-        if(_unityOfWork.SessionRepository.Search( s => s.UserId == id).Result.Any())
+        if(_unitOfWork.SessionRepository.Search( s => s.UserId == id).Result.Any())
             return Notificate("Is not possible delete an user that made an operation on system");
 
-        await _unityOfWork.UserRepository.Delete(id);
+        await _unitOfWork.UserRepository.Delete(id);
         return true;
     }
 
     public void Dispose()
     {
-        _unityOfWork?.Dispose();
+        _unitOfWork?.Dispose();
         GC.SuppressFinalize(this);
     }
 
     public async Task<IEnumerable<User>> GetAll(int pageNumber, int pageSize, Expression<Func<User, bool>> predicate, Expression<Func<User, object>> orderBy, bool desc)
     {
-        return await _unityOfWork.UserRepository.GetAll(pageNumber, pageSize, predicate, orderBy, desc);
+        return await _unitOfWork.UserRepository.GetAll(pageNumber, pageSize, predicate, orderBy, desc);
     }
 
     public Task<User> GetByEmailAndPassword(string email, string password)
     {
-        return _unityOfWork.UserRepository.GetUserByEmailAndPassword(email, SHA256Criptografy.Encrypt(password));
+        return _unitOfWork.UserRepository.GetUserByEmailAndPassword(email, SHA256Criptografy.Encrypt(password));
     }
 
     public Task<User> GetById(Guid id)
     {
-        return _unityOfWork.UserRepository.GetById(id);
+        return _unitOfWork.UserRepository.GetById(id);
     }
 
     public Task<int> GetTotal(Expression<Func<User, bool>> predicate)
     {
-        return _unityOfWork.UserRepository.GetTotal(predicate);
+        return _unitOfWork.UserRepository.GetTotal(predicate);
     }
 
     public async Task<bool> Update(User user)
     {
         if(!Validate(user, true)) return false;
     
-        string hashedPassword = _unityOfWork.UserRepository.GetById(user.Id).Result.Password;
+        string hashedPassword = _unitOfWork.UserRepository.GetById(user.Id).Result.Password;
 
         if(user.Password is not null && user.Password != hashedPassword)
             user.EncryptPassword(user.Password);
 
-        await _unityOfWork.UserRepository.Update(user);
+        await _unitOfWork.UserRepository.Update(user);
 
         return true;
     }
 
     public async Task<bool> UpdatePassword(User user, string newPassword)
     {
-        var entity = await _unityOfWork.UserRepository.GetById(user.Id);
+        var entity = await _unitOfWork.UserRepository.GetById(user.Id);
 
         if(entity is null)
             return Notificate("User not found.");
@@ -104,14 +104,14 @@ public class UserService(IUnityOfWork unityOfWork,
         entity.EncryptPassword(newPassword);
         entity.SetFirstAccessFlag(false);
 
-        await _unityOfWork.UserRepository.Update(entity);
+        await _unitOfWork.UserRepository.Update(entity);
 
         return true;
     }
 
     public async Task<bool> UpdateStatus(Guid id)
     {
-        var user = await _unityOfWork.UserRepository.GetById(id);
+        var user = await _unitOfWork.UserRepository.GetById(id);
 
         if(user is null)
             return Notificate("User not found.");
@@ -121,7 +121,7 @@ public class UserService(IUnityOfWork unityOfWork,
         else
             user.Activate();
 
-        await _unityOfWork.UserRepository.Update(user);
+        await _unitOfWork.UserRepository.Update(user);
 
         return true;
     }
@@ -135,7 +135,7 @@ public class UserService(IUnityOfWork unityOfWork,
         if(isUpdate)
             expression = expression.And( u => u.Id != user.Id);
 
-        if(_unityOfWork.UserRepository.Search(expression).Result.Any())
+        if(_unitOfWork.UserRepository.Search(expression).Result.Any())
             return Notificate("E-mail already register.");
 
         return true;

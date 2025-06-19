@@ -10,9 +10,7 @@ public static class Seed
     {
         modelBuilder.Entity<Role>().HasData(
             new Role(Guid.Parse("0b9b96b8-c083-4c5e-b2b3-c9b142302def"), "System"),
-            new Role(Guid.Parse("775611a5-7f0b-46b9-8a2c-1f2526d865e5"), "Administrator"),
-            new Role(Guid.Parse("4b4f973b-2f57-4671-a302-60cfecbc1bf9"), "StoreOwner"),
-            new Role(Guid.Parse("63569f70-acee-4296-83a7-ef495203c890"), "Client")
+            new Role(Guid.Parse("775611a5-7f0b-46b9-8a2c-1f2526d865e5"), "Developer")
         );
 
         modelBuilder.Entity<User>().HasData(

@@ -7,9 +7,11 @@ using Ofernandoavila.Mailman.Business.Interfaces.Repositories;
 using Ofernandoavila.Mailman.Business.Interfaces.Repositories.AccessControl;
 using Ofernandoavila.Mailman.Business.Interfaces.Repositories.Parameter;
 using Ofernandoavila.Mailman.Business.Interfaces.Services.AccessControl;
+using Ofernandoavila.Mailman.Business.Interfaces.Services.Parameter;
 using Ofernandoavila.Mailman.Business.Interfaces.User;
 using Ofernandoavila.Mailman.Business.Models.Notification;
 using Ofernandoavila.Mailman.Business.Models.Services.AccessControl;
+using Ofernandoavila.Mailman.Business.Models.Services.Parameter;
 using Ofernandoavila.Mailman.Data.Context;
 using Ofernandoavila.Mailman.Data.Repositories;
 using Ofernandoavila.Mailman.Data.Repositories.AccessControl;
@@ -30,12 +32,13 @@ public static class DependencyInjectionConfig
         services.AddScoped<INotificator, Notificator>();
         services.AddScoped<IUser, AppUser>();
         services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-        services.AddScoped<IUnityOfWork, UnityOfWork>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
 
+        services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<ISessionService, SessionService>();
         services.AddScoped<IUserService, UserService>();
 

@@ -3,7 +3,7 @@ using Ofernandoavila.Mailman.Business.Interfaces.Repositories.Parameter;
 
 namespace Ofernandoavila.Mailman.Business.Interfaces.Repositories;
 
-public interface IUnityOfWork : IDisposable
+public interface IUnitOfWork : IDisposable
 {
     IUserRepository UserRepository { get; }
     ISessionRepository SessionRepository { get; }

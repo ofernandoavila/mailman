@@ -80,9 +80,7 @@ namespace Ofernandoavila.Mailman.Data.Migrations
                 values: new object[,]
                 {
                     { new Guid("0b9b96b8-c083-4c5e-b2b3-c9b142302def"), 1, "System" },
-                    { new Guid("4b4f973b-2f57-4671-a302-60cfecbc1bf9"), 1, "StoreOwner" },
-                    { new Guid("63569f70-acee-4296-83a7-ef495203c890"), 1, "Client" },
-                    { new Guid("775611a5-7f0b-46b9-8a2c-1f2526d865e5"), 1, "Administrator" }
+                    { new Guid("775611a5-7f0b-46b9-8a2c-1f2526d865e5"), 1, "Developer" }
                 });
 
             migrationBuilder.InsertData(

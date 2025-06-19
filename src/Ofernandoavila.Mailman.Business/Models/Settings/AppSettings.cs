@@ -1,5 +1,3 @@
-using System;
-
 namespace Ofernandoavila.Mailman.Business.Models.Settings;
 
 public class AppSettings

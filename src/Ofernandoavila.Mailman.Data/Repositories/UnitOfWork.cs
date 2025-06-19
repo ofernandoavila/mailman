@@ -9,7 +9,7 @@ using Ofernandoavila.Mailman.Data.Repositories.Parameter;
 
 namespace Ofernandoavila.Mailman.Data.Repositories;
 
-public class UnityOfWork(AppDbContext dbContext, IMemoryCache memoryCache) : IUnityOfWork
+public class UnitOfWork(AppDbContext dbContext, IMemoryCache memoryCache) : IUnitOfWork
 {
     private readonly AppDbContext _dbContext = dbContext;
     private readonly IMemoryCache _memoryCache = memoryCache;

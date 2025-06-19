@@ -5,9 +5,9 @@ using Ofernandoavila.Mailman.Business.Models.AccessControl;
 
 namespace Ofernandoavila.Mailman.Business.Models.Services.AccessControl;
 
-public class SessionService(IUnityOfWork unityOfWork, INotificator notificator) : BaseService(notificator), ISessionService
+public class SessionService(IUnitOfWork unitOfWork, INotificator notificator) : BaseService(notificator), ISessionService
 {
-    private readonly IUnityOfWork _unitOfWork = unityOfWork;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
     public async Task<bool> Add(Session session)
     {
         await _unitOfWork.SessionRepository.Add(session);

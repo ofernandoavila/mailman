@@ -18,4 +18,8 @@
     <ProjectReference Include="../Ofernandoavila.Mailman.Business/Ofernandoavila.Mailman.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

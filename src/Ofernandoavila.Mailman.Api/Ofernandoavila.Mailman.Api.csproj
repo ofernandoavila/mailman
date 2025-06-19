@@ -31,7 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+	  <Content Update="appsettings.json" CopyToOutputDirectory="Always">
+	    <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+	  </Content>
+	  <Content Update="wwwroot\hc-ui.css">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+    </ItemGroup>
 
 </Project>
