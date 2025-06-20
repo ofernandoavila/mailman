@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Ofernandoavila.Mailman.Business.Models.AccessControl;
+using Ofernandoavila.Mailman.Business.Models.License;
 using Ofernandoavila.Mailman.Business.Models.Parameter;
 
 namespace Ofernandoavila.Mailman.Data.Context;
@@ -10,6 +11,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Session> Session { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+    public DbSet<License> Licenses { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("en_US.utf8");

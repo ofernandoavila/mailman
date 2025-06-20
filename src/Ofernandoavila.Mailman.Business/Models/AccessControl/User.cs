@@ -17,8 +17,9 @@ public class User : Entity
 
     public Role Role { get; set; }
     public Guid SessionId { get; set; }
+    public Guid LicenseId { get; set; }
     public IEnumerable<Session> Session { get; set; }
-
+    public IEnumerable<Business.Models.License.License> Licenses { get; set; }
     public User()
     {
 

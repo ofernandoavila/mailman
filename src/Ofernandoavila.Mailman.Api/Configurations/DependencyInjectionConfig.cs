@@ -7,14 +7,17 @@ using Ofernandoavila.Mailman.Business.Interfaces.Repositories;
 using Ofernandoavila.Mailman.Business.Interfaces.Repositories.AccessControl;
 using Ofernandoavila.Mailman.Business.Interfaces.Repositories.Parameter;
 using Ofernandoavila.Mailman.Business.Interfaces.Services.AccessControl;
+using Ofernandoavila.Mailman.Business.Interfaces.Services.License;
 using Ofernandoavila.Mailman.Business.Interfaces.Services.Parameter;
 using Ofernandoavila.Mailman.Business.Interfaces.User;
 using Ofernandoavila.Mailman.Business.Models.Notification;
 using Ofernandoavila.Mailman.Business.Models.Services.AccessControl;
+using Ofernandoavila.Mailman.Business.Models.Services.License;
 using Ofernandoavila.Mailman.Business.Models.Services.Parameter;
 using Ofernandoavila.Mailman.Data.Context;
 using Ofernandoavila.Mailman.Data.Repositories;
 using Ofernandoavila.Mailman.Data.Repositories.AccessControl;
+using Ofernandoavila.Mailman.Data.Repositories.License;
 using Ofernandoavila.Mailman.Data.Repositories.Parameter;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -37,10 +40,12 @@ public static class DependencyInjectionConfig
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ILicenseRepository, LicenseRepository>();
 
         services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<ISessionService, SessionService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ILicenseService, LicenseService>();
 
         return services;
     }

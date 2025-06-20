@@ -11,6 +11,7 @@ public class UserMapping : IEntityTypeConfiguration<User>
         builder.HasKey( u => u.Id);
 
         builder.Ignore( u => u.SessionId);
+        builder.Ignore( u => u.LicenseId);
         builder.Ignore( u => u.ValidationResult);
 
         builder.Property( u => u.Name)
@@ -46,6 +47,10 @@ public class UserMapping : IEntityTypeConfiguration<User>
         builder.HasOne( u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey( u => u.RoleId);
+
+        builder.HasMany(u => u.Licenses)
+                .WithOne(r => r.User)
+                .HasForeignKey(u => u.UserId);
 
         builder.Property(u => u.Active)
                 .IsRequired()

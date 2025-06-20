@@ -8,6 +8,7 @@ public interface IUnitOfWork : IDisposable
     IUserRepository UserRepository { get; }
     ISessionRepository SessionRepository { get; }
     IRoleRepository RoleRepository { get; }
+    ILicenseRepository LicenseRepository { get; }
 
     Task<int> Complete();
 }

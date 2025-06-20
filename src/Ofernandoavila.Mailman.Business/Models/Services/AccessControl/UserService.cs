@@ -64,14 +64,14 @@ public class UserService(IUnitOfWork unitOfWork,
         return _unitOfWork.UserRepository.GetUserByEmailAndPassword(email, SHA256Criptografy.Encrypt(password));
     }
 
-    public Task<User> GetById(Guid id)
+    public async Task<User> GetById(Guid id)
     {
-        return _unitOfWork.UserRepository.GetById(id);
+        return await _unitOfWork.UserRepository.GetById(id);
     }
 
-    public Task<int> GetTotal(Expression<Func<User, bool>> predicate)
+    public async Task<int> GetTotal(Expression<Func<User, bool>> predicate)
     {
-        return _unitOfWork.UserRepository.GetTotal(predicate);
+        return await _unitOfWork.UserRepository.GetTotal(predicate);
     }
 
     public async Task<bool> Update(User user)

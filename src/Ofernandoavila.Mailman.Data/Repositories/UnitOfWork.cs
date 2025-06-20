@@ -5,6 +5,7 @@ using Ofernandoavila.Mailman.Business.Interfaces.Repositories.AccessControl;
 using Ofernandoavila.Mailman.Business.Interfaces.Repositories.Parameter;
 using Ofernandoavila.Mailman.Data.Context;
 using Ofernandoavila.Mailman.Data.Repositories.AccessControl;
+using Ofernandoavila.Mailman.Data.Repositories.License;
 using Ofernandoavila.Mailman.Data.Repositories.Parameter;
 
 namespace Ofernandoavila.Mailman.Data.Repositories;
@@ -20,6 +21,8 @@ public class UnitOfWork(AppDbContext dbContext, IMemoryCache memoryCache) : IUni
     public ISessionRepository SessionRepository { get => _sessionRepository ??= new SessionRepository(_dbContext);  }
     private IRoleRepository _roleRepository;
     public IRoleRepository RoleRepository { get => _roleRepository ??= new RoleRepository(_dbContext); }
+    private ILicenseRepository _licenseRepository;
+    public ILicenseRepository LicenseRepository { get => _licenseRepository ??= new LicenseRepository(_dbContext); }
 
     public async Task<int> Complete()
     {
