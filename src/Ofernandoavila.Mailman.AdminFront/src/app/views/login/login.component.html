@@ -1,0 +1,19 @@
+<div class="w-100 vh-100 d-flex align-items-center justify-content-center">
+    <form class="p-4 d-flex flex-column gap-3 border rounded" [formGroup]="loginForm">
+        <div class="logo pt-4">
+            Admin | <app-logo></app-logo>
+        </div>
+        @if(error) {
+            <div class="alert alert-warning">{{ error }}</div>
+        }
+        <div class="form-group">
+            <label for="user" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="user" name="user" formControlName="user">
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" formControlName="password">
+        </div>
+        <button class="btn btn-primary" [disabled]="loading" (click)="onSubmit()">Login</button>
+    </form>
+</div>

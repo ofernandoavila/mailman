@@ -1,0 +1,44 @@
+.aside-banner {
+    position: relative;
+    padding: 0 !important;
+    background-color: #15508C;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+
+    .version {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        color: #fff;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    gap: 8px;
+
+    img {
+        width: 40%;
+        object-fit: contain;
+    }
+
+    h4 {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.loading-spinner {
+    position: absolute;
+    right: -36px;
+    top: 50%;
+    transform: translateY(-50%);
+}

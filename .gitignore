@@ -482,3 +482,44 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Compiled output
+src/Ofernandoavila.Mailman.AdminFront/dist
+src/Ofernandoavila.Mailman.AdminFront/tmp
+src/Ofernandoavila.Mailman.AdminFront/out-tsc
+src/Ofernandoavila.Mailman.AdminFront/bazel-out
+
+# Node
+src/Ofernandoavila.Mailman.AdminFront/node_modules
+src/Ofernandoavila.Mailman.AdminFront/npm-debug.log
+src/Ofernandoavila.Mailman.AdminFront/yarn-error.log
+
+# IDEs and editors
+src/Ofernandoavila.Mailman.AdminFront/.idea/
+src/Ofernandoavila.Mailman.AdminFront/.project
+src/Ofernandoavila.Mailman.AdminFront/.classpath
+src/Ofernandoavila.Mailman.AdminFront/.c9/
+src/Ofernandoavila.Mailman.AdminFront/*.launch
+src/Ofernandoavila.Mailman.AdminFront/.settings/
+src/Ofernandoavila.Mailman.AdminFront/*.sublime-workspace
+
+# Visual Studio Code
+src/Ofernandoavila.Mailman.AdminFront/.vscode/*
+src/Ofernandoavila.Mailman.AdminFront/!.vscode/settings.json
+src/Ofernandoavila.Mailman.AdminFront/!.vscode/tasks.json
+src/Ofernandoavila.Mailman.AdminFront/!.vscode/launch.json
+src/Ofernandoavila.Mailman.AdminFront/!.vscode/extensions.json
+src/Ofernandoavila.Mailman.AdminFront/.history/*
+
+# Miscellaneous
+src/Ofernandoavila.Mailman.AdminFront/.angular/cache
+src/Ofernandoavila.Mailman.AdminFront/.sass-cache/
+src/Ofernandoavila.Mailman.AdminFront/connect.lock
+src/Ofernandoavila.Mailman.AdminFront/coverage
+src/Ofernandoavila.Mailman.AdminFront/libpeerconnection.log
+src/Ofernandoavila.Mailman.AdminFront/testem.log
+src/Ofernandoavila.Mailman.AdminFront/typings
+
+# System files
+src/Ofernandoavila.Mailman.AdminFront/.DS_Store
+src/Ofernandoavila.Mailman.AdminFront/Thumbs.db

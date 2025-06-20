@@ -1,0 +1,33 @@
+<app-basic-view>
+    <app-grid
+        title="Users"
+        [fetchData]="onFetchUsers"
+        [tableHeader]="header"
+        [tableRow]="row"
+        [onSearchFilter]="onSearchFilter"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:23%">Id</th>
+                <th style="width:23%">Name</th>
+                <th style="width:23%">E-mail</th>
+                <th style="width:23%">Role</th>
+                <th style="width:5%">Actions</th>
+            </tr>
+        </ng-template>
+
+        <ng-template #row let-item>
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.role | role }}</td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <p-button severity="contrast" [routerLink]="['./', item.id]" label="View" icon="pi pi-pencil" size="small" />
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </app-grid>
+</app-basic-view>
